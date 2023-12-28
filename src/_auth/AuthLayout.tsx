@@ -14,7 +14,7 @@ const AuthLayout = () => {
           <Outlet />
         </section>
 
-        <img src="" />
+        <img src="/assets/images/side-img.svg" />
       </>
     )}
     
