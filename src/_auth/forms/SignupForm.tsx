@@ -16,10 +16,11 @@ import { SignupFormValidation } from "@/lib/validation";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import Loader from "@/components/shared/Loader";
+import { createUserAccount } from "@/lib/appwrite/api";
 
 const SignupForm = () => {
 
-  const isLoading = true;
+  const isLoading = false;
   //Define your Form
   const form = useForm<z.infer<typeof SignupFormValidation>>({
     resolver: zodResolver(SignupFormValidation),
@@ -32,9 +33,12 @@ const SignupForm = () => {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof SignupFormValidation>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof SignupFormValidation>) {
+    const newAccount = await createUserAccount(values);
+
+    console.log(newAccount);
   }
+  
   return (
     <Form {...form}>
       <div className="sm:w-420 flex-col flex-center">
