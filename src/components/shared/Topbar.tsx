@@ -9,18 +9,19 @@ const Topbar = () => {
 
   const navigate = useNavigate();
   const { mutate: signOut, isSuccess } = useSignOutAccount();
+  
   useEffect(() => {
     if(isSuccess) navigate(0);
   }, [isSuccess]);
 
   return (
     <section className="topbar">
-        <div className="flex-between py-4 px-5">
+        <div className="flex-between py-3 px-1">
             <Link to={"/"} className="flex gap-3 items-center">
                 <img 
-                  src="/assets/images/logo.svg"
+                  src="/assets/images/logomobile.png"
                   alt="logo"
-                  width={130}
+                  width={150}
                   height={325}
                 />
             </Link>
