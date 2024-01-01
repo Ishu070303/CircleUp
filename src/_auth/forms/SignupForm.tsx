@@ -69,10 +69,10 @@ const SignupForm = () => {
   
   return (
     <Form {...form}>
-      <div className="sm:w-420 flex-col flex-center">
-        <img src="/assets/images/logo.svg" alt="logo" />
+      <div className="sm:w-420 flex-col flex-center h-screen">
+        <img src="/assets/images/logomobile.png" className="pr-3" alt="logo" width="250px" height="100px" />
 
-        <h2 className="h3-bold md:h2-bold pt-2 sm:pt-12">
+        <h2 className="md:h2-bold">
           Create a new account
         </h2>
         <p className="text-light-3 small-medium md:base-regular mt-2">
@@ -152,7 +152,7 @@ const SignupForm = () => {
             )}
           </Button>
 
-          <p className="text-small-regular text-light-2 text-center mt-2">
+          <p className="text-small-regular text-light-2 text-center">
             Already have an account?
             <Link to={"/sign-in"} className="text-primary-500 text-small-semibold ml-1">Log in</Link>
           </p>
