@@ -26,7 +26,7 @@ export const sidebarLinks = [
    {
     imgURL: "/assets/icons/gallery-add.svg",
     route: "/create-post",
-    label: "Create-Post"
+    label: "Create Post"
    }
 ];
 
