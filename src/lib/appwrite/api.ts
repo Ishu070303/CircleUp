@@ -66,9 +66,21 @@ export async function signInAccount(user : {
   }
 }
 
-export async function getCurrentUser() {
+export async function getAccount() {
   try {
     const currentAccount = await account.get();
+
+    return currentAccount;
+  } 
+  
+  catch (error) {
+    console.log(error);
+  }
+};
+
+export async function getCurrentUser() {
+  try {
+    const currentAccount = await getAccount();
     
     if(!currentAccount) throw Error;
 
@@ -84,6 +96,7 @@ export async function getCurrentUser() {
   
   } catch (error) {
     console.log(error);
+    return null;
   }
 };
 
@@ -210,6 +223,7 @@ export async function likePost(postId: string, likesArray: string[]) {
     );
 
     if(!updatedPost) throw Error;
+
     return updatedPost;
 
   } catch (error) {
@@ -231,6 +245,7 @@ export async function savePost(postId: string, userId: string) {
     );
 
     if(!updatedPost) throw Error;
+
     return updatedPost;
 
   } catch (error) {
