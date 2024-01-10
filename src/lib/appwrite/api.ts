@@ -359,4 +359,4 @@ export async function deletePost(postId: string, imageId: string) {
   catch (error) {
     console.log(error);
   }
-}
+};
