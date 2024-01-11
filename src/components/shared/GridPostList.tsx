@@ -4,4 +4,4 @@ const GridPostList = () => {
   )
 }
 
-export default GridPostList
+export default GridPostList;
