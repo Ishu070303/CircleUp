@@ -7,7 +7,7 @@ import {
     useInfiniteQuery,
 } from "@tanstack/react-query";
 import { QUERY_KEYS } from './queryKeys'; 
-import { createUserAccount, signInAccount, signOutAccount, createPost, getRecentPosts, likePost, savePost, deleteSavedPost, getCurrentUser, getPostById, updatePost, deletePost, getInfintePost, searchPosts, getUsers } from "../appwrite/api";
+import { createUserAccount, signInAccount, signOutAccount, createPost, getRecentPosts, likePost, savePost, deleteSavedPost, getCurrentUser, getPostById, updatePost, deletePost, getInfintePost, searchPosts, getUsers, getUserById } from "../appwrite/api";
 import { INewPost, INewUser, IUpdatePost } from "@/types";
 
 export const useCreateUserAccount = () => {
@@ -182,5 +182,13 @@ export const useGetUsers = (limit?: number) => {
     return useQuery({
         queryKey: [QUERY_KEYS.GET_USERS],
         queryFn: () => getUsers(limit),
+    });
+};
+
+export const useGetUserById = (userId: string) => {
+    return useQuery({
+        queryKey: [QUERY_KEYS.GET_USER_BY_ID, userId],
+        queryFn: () => getUserById(userId),
+        enabled: !!userId,
     });
 };
