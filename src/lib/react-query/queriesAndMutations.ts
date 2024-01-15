@@ -7,8 +7,8 @@ import {
     useInfiniteQuery,
 } from "@tanstack/react-query";
 import { QUERY_KEYS } from './queryKeys'; 
-import { createUserAccount, signInAccount, signOutAccount, createPost, getRecentPosts, likePost, savePost, deleteSavedPost, getCurrentUser, getPostById, updatePost, deletePost, getInfintePost, searchPosts, getUsers, getUserById } from "../appwrite/api";
-import { INewPost, INewUser, IUpdatePost } from "@/types";
+import { createUserAccount, signInAccount, signOutAccount, createPost, getRecentPosts, likePost, savePost, deleteSavedPost, getCurrentUser, getPostById, updatePost, deletePost, getInfintePost, searchPosts, getUsers, getUserById, updateUser } from "../appwrite/api";
+import { INewPost, INewUser, IUpdatePost, IUpdateUser } from "@/types";
 
 export const useCreateUserAccount = () => {
     return useMutation({
@@ -192,3 +192,19 @@ export const useGetUserById = (userId: string) => {
         enabled: !!userId,
     });
 };
+
+export const useUpdateUser = () => {
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationFn: (user: IUpdateUser) => updateUser(user),
+        onSuccess: (data) => {
+            queryClient.invalidateQueries({
+                queryKey: [QUERY_KEYS.GET_CURRENT_USER],
+            });
+
+            queryClient.invalidateQueries({
+                queryKey: [QUERY_KEYS.GET_USER_BY_ID, data?.$id]
+            })
+        }
+    })
+}
