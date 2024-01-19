@@ -20,7 +20,9 @@ const LikedPosts = () => {
     <p className="text-light-4 m-4">No liked posts</p>
    )}
 
+   <div className="m-auto">
    <GridPostList  posts={currentUser.liked} showStats={false} />
+   </div>
    </>
   )
 }
