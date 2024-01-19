@@ -70,7 +70,7 @@ const SignupForm = () => {
   return (
     <Form {...form}>
       <div className="sm:w-420 flex-col flex-center h-screen">
-        <img src="/assets/images/logomobile.png" className="mr-9" alt="logo" width="250px" height="100px" />
+        <img src="/assets/images/circleup.png" className="mb-2 mr-5" alt="logo" width="250px" height="100px" />
 
         <h2 className="md:h2-bold">
           Create a new account
