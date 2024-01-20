@@ -1,21 +1,49 @@
+import GridPostList from "@/components/shared/GridPostList";
 import PostStats from "@/components/shared/PostStats";
 import { Button } from "@/components/ui/button";
 import { useUserContext } from "@/context/AuthContext";
-import { useGetPostById } from "@/lib/react-query/queriesAndMutations";
+import { useDeletePost, useGetPostById, useGetUserPosts } from "@/lib/react-query/queriesAndMutations";
 import { formatDate } from "@/lib/utils";
-import { Loader } from "lucide-react";
-import { Link, useParams } from "react-router-dom";
+import Loader from "@/components/shared/Loader";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 const PostDetails = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
-  const { data: post, isPending } = useGetPostById(id || "");
   const { user } = useUserContext();
 
-  const handleDeletePost = () => {};
+  const { data: post, isPending } = useGetPostById(id);
+  const { data: userPosts, isPending: isUserPostLoading } = useGetUserPosts(post?.creator.$id);
+  const { mutate: deletePost } = useDeletePost();
+
+  const relatedPosts = userPosts?.documents.filter(
+    (userPost) => userPost.$id !== id
+  )
+
+  const handleDeletePost = () => {
+    deletePost({ postId: id, imageId: post?.imageId });
+    navigate(-1);
+  };
 
   return (
     <div className="post_details-container">
-      {isPending ? (
+      <div className="hidden md:flex max-w-5xl w-full">
+        <Button 
+          onClick={() => navigate(-1)}
+          variant={"ghost"}
+          className="shad-button_ghost"
+        >
+          <img 
+            src="/assets/icons/back.svg"
+            alt="back"
+            width={24}
+            height={24}
+          />
+          <p className="small-medium lg:base-medium">Back</p>
+        </Button>
+      </div>
+
+      {isPending || !post ? (
         <Loader />
       ) : (
         <div className="post_details-card">
@@ -26,14 +54,14 @@ const PostDetails = () => {
               <Link to={`/profile/${post?.creator.$id}`} className="flex items-center gap-3">
                 <img
                   src={
-                    post?.creator?.imageUrl ||
+                    post?.creator.imageUrl ||
                     "assets/icons/profile-placeholder.svg"
                   }
                   alt="creator"
                   className="rounded-full w-8 h-8 lg:w-12 lg:h-12"
                 />
 
-                <div className="flex flex-col">
+                <div className="flex gap-1 flex-col">
                   <p className="base-medium lg:body-bold text-light-1">
                     {post?.creator.name}
                   </p>
@@ -88,6 +116,19 @@ const PostDetails = () => {
           </div>
         </div>
       )}
+
+      <div className="w-full max-w-5xl">
+        <hr className="border w-full border-dark-4/80" />
+
+        <h3 className="body-bold md:h3-bold w-full my-10">
+          More Related Posts
+        </h3>
+        {isUserPostLoading || !relatedPosts ? (
+          <Loader />
+        ) : (
+          <GridPostList posts={relatedPosts} />
+        )}
+      </div>
     </div>
   );
 };

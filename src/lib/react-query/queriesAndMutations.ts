@@ -7,7 +7,7 @@ import {
     useInfiniteQuery,
 } from "@tanstack/react-query";
 import { QUERY_KEYS } from './queryKeys'; 
-import { createUserAccount, signInAccount, signOutAccount, createPost, getRecentPosts, likePost, savePost, deleteSavedPost, getCurrentUser, getPostById, updatePost, deletePost, getInfintePost, searchPosts, getUsers, getUserById, updateUser } from "../appwrite/api";
+import { createUserAccount, signInAccount, signOutAccount, createPost, getRecentPosts, likePost, savePost, deleteSavedPost, getCurrentUser, getPostById, updatePost, deletePost, getInfintePost, searchPosts, getUsers, getUserById, updateUser, getUserPosts } from "../appwrite/api";
 import { INewPost, INewUser, IUpdatePost, IUpdateUser } from "@/types";
 
 export const useCreateUserAccount = () => {
@@ -129,6 +129,14 @@ export const useGetPostById = (postId: string) => {
     })
 };
 
+export const useGetUserPosts = (userId: string) => {
+    return useQuery({
+        queryKey: [QUERY_KEYS.GET_USER_POSTS, userId],
+        queryFn: () => getUserPosts(userId),
+        enabled: !!userId,
+    })
+}
+
 export const useUpdatePost = () => {
     const queryClient = useQueryClient();
 
@@ -146,7 +154,7 @@ export const useDeletePost = () => {
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: ({ postId, imageId }: { postId: string, imageId: string}) => deletePost(postId, imageId),
+        mutationFn: ({ postId, imageId }: { postId?: string, imageId: string}) => deletePost(postId, imageId),
         onSuccess: () => {
             queryClient.invalidateQueries({
                 queryKey: [QUERY_KEYS.GET_RECENT_POSTS]
@@ -160,11 +168,12 @@ export const useGetPosts = () => {
         queryKey: [QUERY_KEYS.GET_INFINTE_POSTS],
         queryFn: getInfintePost,
         getNextPageParam: (lastPage) => {
+            //if there's no data there are no more page
+            if(lastPage && lastPage.documents.length === 0){
+                return null;
+            }
 
-            if(lastPage && lastPage.documents.length === 0) return null;
-
-            const lastId = lastPage?.documents[lastPage?.documents.length -1].$id;
-
+            const lastId = lastPage?.documents[lastPage.documents.length - 1].$id;
             return lastId;
         }
     })
