@@ -166,14 +166,14 @@ export const useDeletePost = () => {
 export const useGetPosts = () => {
     return useInfiniteQuery({
         queryKey: [QUERY_KEYS.GET_INFINTE_POSTS],
-        queryFn: getInfintePost,
-        getNextPageParam: (lastPage) => {
+        queryFn: getInfintePost as any,
+        getNextPageParam: (lastPage: any) => {
             //if there's no data there are no more page
             if(lastPage && lastPage.documents.length === 0){
                 return null;
             }
 
-            const lastId = lastPage?.documents[lastPage.documents.length - 1].$id;
+            const lastId = lastPage.documents[lastPage.documents.length - 1].$id;
             return lastId;
         }
     })
