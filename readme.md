@@ -19,17 +19,25 @@
 ## 📋 <a name="table">Table of Contents</a>
 
 1. 🤖 [Introduction](#introduction)
-1. ⚙️ [Tech Stack](#tech-stack)
-2. 🔋 [Features](#features)
-3. 🤸 [Quick Start](#quick-start)
-4. 🕸️ [Snippets](#snippets)
-5. ❤️ [Contribution](#contribution)
+2. 📺 [Demo](#demo)
+3. ⚙️ [Tech Stack](#tech-stack)
+4. 🔋 [Features](#features)
+5. 🤸 [Quick Start](#quick-start)
+6. 🕸️ [Snippets](#snippets)
+7. ❤️ [Contribution](#contribution)
 
 
 
 ## <a name="introduction">🤖 Introduction</a>
 
 Explore social media with this user-friendly platform that has a nice look and lots of features. Easily create and explore posts, and enjoy a strong authentication system and quick data fetching using React Query for a smooth user experience.
+
+## <a name="demo">Demo</a>
+
+<a href="https://youtu.be/_W3R2VwRyF4?feature=shared" target="_blank">
+      <img src="https://github.com/adrianhajdin/social_media_app/assets/151519281/be514a19-3cbb-48b7-9acd-2cf4d2e319c4" alt="Project Banner">
+</a>
+
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
