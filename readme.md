@@ -13,7 +13,7 @@
     <img src="https://img.shields.io/badge/-Typescript-black?style=for-the-badge&logoColor=white&logo=typescript&color=3178C6" alt="typescript" />
   </div>
 
-  <h3 align="center">Circle Up</h3>
+  <h3 align="center">Circle Up - A Social Media Platform</h3>
 </div>
 
 ## 📋 <a name="table">Table of Contents</a>
@@ -721,8 +721,8 @@ export const checkIsLiked = (likeList: string[], userId: string) => {
 
 </details>
 
-## <a name="links">🔗 Links</a>
-
-Assets used in the project are [here](https://drive.google.com/file/d/13_7FofRAC3wARqPtAVPi53QNJJRd5RH_/view?usp=sharing)
+## <a name="links">❤️ Contribution </a>
+- When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change."Circle Up" 
 <br />
+
 #
