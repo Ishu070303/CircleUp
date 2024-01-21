@@ -32,10 +32,6 @@ Explore social media with this user-friendly platform that has a nice look and l
 
 ## <a name="demo">Demo</a>
 
-<a href="https://youtu.be/_W3R2VwRyF4?feature=shared" target="_blank">
-      <img src="https://github.com/adrianhajdin/social_media_app/assets/151519281/be514a19-3cbb-48b7-9acd-2cf4d2e319c4" alt="Project Banner">
-</a>
-
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
