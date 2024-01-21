@@ -1,7 +1,7 @@
 # Circle Up
 
 ## Introduction
-> It's a mordern social media app with a stunning UI, with a native mobile feel, a special tech stack, an infinte scrolling feature, and amazing performance using ReactJs, Appwrite, Typescript 😍
+> It's a modern social media app with a stunning UI, with a native mobile feel, a special tech stack, an infinte scrolling feature, and amazing performance using ReactJs, Appwrite, Typescript 😍
  
 ## Features
 </br>
