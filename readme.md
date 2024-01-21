@@ -721,7 +721,7 @@ export const checkIsLiked = (likeList: string[], userId: string) => {
 
 </details>
 
-## <a name="links">❤️ Contribution </a>
+## <a name="contribution">❤️ Contribution </a>
 - When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change."Circle Up" 
 <br />
 
