@@ -12,7 +12,7 @@ const PostDetails = () => {
   const { id } = useParams();
   const { user } = useUserContext();
 
-  const { data: post, isPending } = useGetPostById(id);
+  const { data: post, isPending } = useGetPostById(id || "");
   const { data: userPosts, isPending: isUserPostLoading } = useGetUserPosts(post?.creator.$id);
   const { mutate: deletePost } = useDeletePost();
 

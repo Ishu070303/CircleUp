@@ -2,6 +2,7 @@ import { INewPost, INewUser, IUpdatePost, IUpdateUser } from "@/types";
 import { account, appwriteConfig, avatars, databases, storage } from "./config";
 import { ID, Query } from "appwrite";
 
+
 export async function createUserAccount(user: INewUser) {
     try {
       const newAccount = await account.create(
@@ -365,8 +366,7 @@ export async function deletePost(postId?: string, imageId?: string) {
     console.log(error);
   }
 };
-
-export async function getInfintePost({ pageParam }:{pageParam:number}) {
+export async function getInfintePost({ pageParam }:{ pageParam: number}){
   
   const queries: any[] = [Query.orderDesc("$updatedAt"), Query.limit(9)];
     
@@ -382,7 +382,7 @@ export async function getInfintePost({ pageParam }:{pageParam:number}) {
     );
 
     if(!posts) throw Error;
-    
+
     return posts;
   } 
   
@@ -390,6 +390,7 @@ export async function getInfintePost({ pageParam }:{pageParam:number}) {
     console.log(error);
   }
 };
+
 
 export async function searchPosts(searchTerm: string) {
   try {
