@@ -1,6 +1,6 @@
 <div align="center">
   <br />
-      <img src="https://github.com/Ishu070303/CircleUp/public/assets/images/demoimage.png" alt="Project Banner">
+      <img src="https://raw.githubusercontent.com/Ishu070303/CircleUp/master/public/assets/images/demoimage.png" alt="Project Banner">
   <br />
 
   <div>
