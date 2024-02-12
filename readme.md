@@ -32,6 +32,8 @@ Explore social media with this user-friendly platform that has a nice look and l
 
 ## <a name="demo">Demo</a>
 
+The deployment link is : [https://circleup-one.vercel.app](https://circleup-one.vercel.app)
+
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
